@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Conditions</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="login.html" class="nav-link" id="loginLink">Login</a>
+            <a href="register.html" class="nav-link" id="registerLink">Register</a>
+            <a href="profile.html" class="nav-link hidden" id="profileLink">Profile</a>
+            <a href="#" class="nav-link hidden" id="signOutLink">Sign Out</a>
+        </div>
+    </nav>
+
+    <main class="container">
+    	<div class="weather-logo">
+            <img src="images/logo.png" alt="Weather Logo">
+        </div>
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Los Angeles, CA">
+                <button id="searchButton" class="search-icon">
+            		<img src="images/magnifying_glass.jpeg" alt="Search" id="searchIcon">
+        		</button>
+            </div>
+            
+            <div class="location-inputs hidden">
+                <input type="text" id="latitudeInput" placeholder="Latitude">
+                <input type="text" id="longitudeInput" placeholder="Longitude">
+                <button id="mapIcon" class="map-icon">
+                    <img src="images/MapIcon.png" alt="Map">
+                </button>
+            </div>
+            
+            <div class="search-options">
+                <label class="radio-container">
+                    <input type="radio" name="searchType" value="city" checked>
+                    <span class="radio-label">City</span>
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="searchType" value="location">
+                    <span class="radio-label">Lat/Long</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Google Maps Overlay (Initially Hidden) -->
+        <div id="mapOverlay" class="map-overlay hidden">
+            <div id="map" class="map-container"></div>
+        </div>
+
+        <!-- Search Results Table -->
+        <div id="searchResults" class="results-container hidden">
+            <div class="results-header">
+		        <h2>All Cities</h2>
+		        <div class="sort-container">
+		            <span class="sort-label">Sort by:</span>
+		            <select id="sortOptions" class="sort-dropdown">
+		                <option value="tempLowDesc">Temp Low DESC</option>
+		                <option value="tempLowAsc">Temp Low ASC</option>
+		                <option value="tempHighDesc">Temp High DESC</option>
+		                <option value="tempHighAsc">Temp High ASC</option>
+		                <option value="name">City Name</option>
+		            </select>
+		        </div>
+		    </div>
+		    <table id="resultsTable">
+		        <thead>
+		            <tr>
+		                <th>City Name</th>
+		                <th>Temp. Low</th>
+		                <th>Temp. High</th>
+		            </tr>
+		        </thead>
+		        <tbody id="resultsBody"></tbody>
+		    </table>
+        </div>
+
+        <!-- Weather Details Section -->
+        <div id="weatherDetails" class="weather-details hidden"></div>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        function initMap() {
+            console.log('Google Maps API loaded');
+        }
+    </script>
+    <script src="js/script.js"></script>
+    <script src="js/index.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvgeX3qQhO9cZt41YsvuuRs8GcIb_1LTA&callback=initMap" async defer></script>
+</body>
+</html>
